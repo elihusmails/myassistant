@@ -105,14 +105,14 @@ def currentTempAtZip(zipcode):
 '''
 def generateTaskIdJson(taskResult):
     context = {"id": taskResult.task_id, 
-              "callback": 'http://' + app.config['CALLBACK_IP'] 
+              "url": 'http://' + app.config['CALLBACK_IP'] 
                                     + ':'
                                     + str(app.config['CALLBACK_PORT'])
                                     + '/myassistant/result/'
                                     + taskResult.task_id}
     goto = "{}".format(taskResult.task_id)
     callbackUrl = "{}".format(context);
-    return jsonify(goto=goto, callback=callbackUrl)
+    return jsonify(callback=callbackUrl)
 
 '''
 ==========================================

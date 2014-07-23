@@ -19,7 +19,7 @@ Starting Things up
 1. Make sure RabbitMQ is running
 2. From the "app" folder, run the command: ../flask/bin/celery -A tasks.celery worker --loglevel=info
 3. From the top-level folder, run the command: python app/tasks.py
-4. In a browser, go to http://127.0.0.1:5000/combine.  You should get a response of "Sum is 6"
+4. To test the system, run the following command: pything tests.py
 
 Useful Links
 ============

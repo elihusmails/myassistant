@@ -1,10 +1,17 @@
 import requests
 import random
+import json
 
 for i in range(10):
-    p = {'x':random.randrange(1,10000000), 'y':random.randrange(1,1000000000)}
+    
+    x = random.randrange(1,10000000)
+    y = random.randrange(1,1000000000)
+    
+    p = {'x':x, 'y':y}
     r = requests.get('http://localhost:5000/myassistant/test', params = p)
-    print r.json()
-    gto = r.json()['goto']
-    r2 = requests.get("http://localhost:5000/myassistant/result/{}".format(gto))
-    print r2.json()
+   
+    rJson = json.loads(r.content)
+    gto = rJson['url']
+    
+    r2 = requests.get(gto)
+    print '{} + {} = {}'.format(x,y,r2.content)

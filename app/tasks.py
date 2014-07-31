@@ -113,9 +113,7 @@ def generateTaskIdJson(taskResult):
                                     + str(app.config['CALLBACK_PORT'])
                                     + '/myassistant/result/'
                                     + taskResult.task_id}
-    goto = "{}".format(taskResult.task_id)
-    callbackUrl = "{}".format(context);
-    return jsonify(callback=callbackUrl)
+    return jsonify(context)
 
 '''
 ==========================================

@@ -37,9 +37,9 @@ many things as I more forward with this project.  Things like Python, Flask, Cel
 One interesting thing that I quickly realized while developing this code (I found some of it at the 
 flask-celery-example link above) is that since this is all asynchronous, the way in which this works is 
 to make 2 requests.  The first one submits the request and the second request get the results.  So to look 
-at the source code, The first call is made to http://127.0.0.1:5000/test.  This will submit the task to the 
+at the source code, The first call is made to http://127.0.0.1:5000/myassistant/test.  This will submit the task to the 
 backend Celery system and get a task ID.  This task ID is returned to the user/browser/etc.  Then this data 
-is parsed and the task ID is sent back as a request using the URL http://127.0.0.1:5000/test/result/<task ID>.  
+is parsed and the task ID is sent back as a request using the URL http://127.0.0.1:5000/myassistant/result/<task ID>.  
 So while there are 2 requests made, the work is being done while the first response is sent back, processed 
 and formed into the second request.  This is what makes the whole system asynchronous and provides a better 
 experience for the user.

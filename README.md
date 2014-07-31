@@ -23,10 +23,10 @@ Starting Things up
 
 Useful Links
 ============
-http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#installing-celery
-http://flask.pocoo.org/docs/patterns/celery/
-http://hairycode.org/2013/07/23/first-steps-with-celery-how-to-not-trip/
-https://github.com/thrisp/flask-celery-example
+1. http://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html#installing-celery
+2. http://flask.pocoo.org/docs/patterns/celery/
+3. http://hairycode.org/2013/07/23/first-steps-with-celery-how-to-not-trip/
+4. https://github.com/thrisp/flask-celery-example
 
 
 Design

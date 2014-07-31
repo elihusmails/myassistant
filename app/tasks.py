@@ -5,7 +5,9 @@ from flask import Flask, Blueprint, abort, jsonify, request, session
 import settings
 from celery import Celery
 import urllib2
-
+import os
+import time
+import psutil
 
 app = Flask(__name__)
 app.config.from_object(settings)
@@ -60,14 +62,15 @@ def add(x, y):
     return x + y
 
 
-
 '''
 ==========================================
 ============= FLASK Section ==============
 ==========================================
 '''
 @app.route('/')
-@app.route('/index')
+@app.route('/myassistant')
+@app.route('/myassistant/index')
+@app.route('/myassistant/index.html')
 def index():
     return 'Hello World!!'
 

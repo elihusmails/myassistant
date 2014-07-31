@@ -17,7 +17,7 @@ Starting Things up
 ==================
 
 1. Make sure RabbitMQ is running
-2. From the "app" folder, run the command: ./celery.bash
+2. From the "src/app" folder, run the command: ./celery.bash
 3. From the top-level folder, run the command: ./run.bash
 4. To test the system, run the following command: pything tests.py
 

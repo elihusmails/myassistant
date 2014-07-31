@@ -1,13 +1,10 @@
 from __future__ import absolute_import
-from os import path, environ
+from os import environ
 import json
-from flask import Flask, Blueprint, abort, jsonify, request, session
+from flask import Flask, jsonify, request
 import settings
 from celery import Celery
 import urllib2
-import os
-import time
-import psutil
 
 app = Flask(__name__)
 app.config.from_object(settings)
@@ -43,19 +40,18 @@ def currentHomeTemp():
     temp_f = parsed_json['current_observation']['temp_f']
     f.close()
     return "Current temperature in %s is: %s" % (location, temp_f)
-	
+
 @celery.task(name='tasks.currentZipcodeTemp')
 def currentZipcodeTemp(zipcode):
-	f = urllib2.urlopen('http://api.wunderground.com/api/' 
+    f = urllib2.urlopen('http://api.wunderground.com/api/' 
                         + app.config['WUNDERGROUND_KEY'] 
                         + '/geolookup/conditions/q/' + zipcode + '.json')
     
-	json_string = f.read()
-	parsed_json = json.loads(json_string)
-	location = parsed_json['location']['city']
-	temp_f = parsed_json['current_observation']['temp_f']
-	f.close()
-	return "Current temperature at zipcode %s is: %s" % (zipcode, temp_f)
+    json_string = f.read()
+    parsed_json = json.loads(json_string)
+    temp_f = parsed_json['current_observation']['temp_f']
+    f.close()
+    return "Current temperature at zipcode %s is: %s" % (zipcode, temp_f)
 
 @celery.task(name="tasks.add")
 def add(x, y):

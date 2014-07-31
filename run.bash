@@ -1,1 +1,1 @@
-python app/tasks.py
+python src/app/tasks.py
